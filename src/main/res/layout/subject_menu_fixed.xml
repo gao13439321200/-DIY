@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:paddingBottom="@dimen/activity_vertical_margin"
+              android:paddingLeft="@dimen/activity_horizontal_margin"
+              android:paddingRight="@dimen/activity_horizontal_margin"
+              android:paddingTop="@dimen/activity_vertical_margin">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/subject_tv_select"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="请选择科目"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/subject_tv_book"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:clickable="true"
+            android:text="教材"
+            android:textSize="20sp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/subject_tv_select"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <ScrollView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                >
+
+                <RadioGroup
+                    android:id="@+id/subject_rg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <RadioButton
+                        android:id="@+id/subject_math"
+                        style="@style/subjectRadioButton"
+                        android:tag="02"
+                        android:text="数学"
+                        />
+
+                    <RadioButton
+                        style="@style/subjectRadioButton"
+                        android:tag="03"
+                        android:text="物理"/>
+
+                    <RadioButton
+                        style="@style/subjectRadioButton"
+                        android:tag="04"
+                        android:text="化学"/>
+
+                    <RadioButton
+                        android:id="@+id/subject_biology"
+                        style="@style/subjectRadioButton"
+                        android:tag="100"
+                        android:text="生物"/>
+
+                    <RadioButton
+                        style="@style/subjectRadioButton"
+                        android:tag="01"
+                        android:text="英语"/>
+
+                    <RadioButton
+                        style="@style/subjectRadioButton"
+                        android:tag="07"
+                        android:text="语文"/>
+                </RadioGroup>
+            </ScrollView>
+
+            <ScrollView
+                android:id="@+id/subject_sv_book"
+                style="@style/subjectScrollView"
+                >
+
+                <RadioGroup
+                    android:id="@+id/subject_rg_book"
+                    style="@style/subjectRadioGroup"/>
+            </ScrollView>
+
+            <ScrollView
+                android:id="@+id/subject_sv_ce"
+                style="@style/subjectScrollView"
+                >
+
+                <RadioGroup
+                    android:id="@+id/subject_rg_ce"
+                    style="@style/subjectRadioGroup"/>
+            </ScrollView>
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+   <!-- 字体大小 -->
+   
+   <dimen name="text_no.20">18sp</dimen>
+   <dimen name="text_no.16">14sp</dimen>
+  
+   
+    <dimen name="actionbar_line_h">5dp</dimen>
+    <!-- local视频-->
+    <dimen name="gride_view_video_width">220dp</dimen>
+    <dimen name="local_movie_gride_item_h_spacing">36dp</dimen>
+    <dimen name="local_movie_gride_item_v_spacing">30dp</dimen>
+    <dimen name="local_movie_distance_left_right">18dp</dimen>
+    <dimen name="movie_poster_width">220dp</dimen>
+    <dimen name="movie_poster_height">124dp</dimen>
+    <dimen name="movie_poster_margin_top">10dp</dimen>
+    <dimen name="movie_tv_margin_right">5dp</dimen>
+    <dimen name="movie_tv_margin_top">5dp</dimen>
+    
+    <!-- end -->
+    <!-- vidonme video -->
+    <dimen name="v_gride_view_video_width">150dp</dimen>
+    <dimen name="movie_distance_top">10dp</dimen>
+    <dimen name="movie_distance_bottom">33dp</dimen>
+    <dimen name="movie_distance_left_right">23dp</dimen>
+    <dimen name="movie_gride_item_h_spacing">46dp</dimen>
+    <dimen name="movie_gride_item_v_spacing">30dp</dimen>
+    <dimen name="movie_item_height">298dp</dimen>
+    <dimen name="v_movie_poster_width">150dp</dimen>
+    <dimen name="v_movie_poster_height">231dp</dimen>
+    <dimen name="v_movie_poster_margin_top">10dp</dimen>
+   <!-- end -->
+    <!-- 专辑 -->
+    <dimen name="photo_gride_item_h_spacing">1dp</dimen>
+     <dimen name="photo_gride_item_v_spacing">25dp</dimen>
+    <dimen name="album_distance_spacing">10dp</dimen>
+    <dimen name="photo_panding_top">10dp</dimen>
+      <dimen name="gride_view_album_width">235dp</dimen>
+    <dimen name="photo_bg_width">218dp</dimen>
+    <dimen name="photo_bg_height">153dp</dimen>
+     <dimen name="photo_item_padding_tb">20dp</dimen>
+      <dimen name="photo_item_padding_lr">12dp</dimen>
+    <!-- 图片 -->
+    <dimen name="gride_view_pic_width">200dp</dimen>
+    <dimen name="pic_gride_item_v_spacing">30dp</dimen>
+    <dimen name="pic_gride_item_spacing">36dp</dimen>
+    <dimen name="pic_distance_top">22dp</dimen>
+    <dimen name="pic_width">200dp</dimen>
+    <dimen name="pic_height">120dp</dimen>
+    <dimen name="pic_margin">10dp</dimen>
+    
+    <dimen name="setting_button_height">40dp</dimen>
+    <dimen name="setting_button_width">100dp</dimen>
+    <!-- 对话框 -->
+    <dimen name="dialog_width">768dp</dimen>
+    <dimen name="dialog_height">582dp</dimen>
+    <dimen name="dialog_serverlogin_width">580dp</dimen>
+    <dimen name="dialog_serverlogin_height">245dp</dimen>
+    <dimen name="dialog_serverlogin_margintop">27dp</dimen>
+    <dimen name="dialog_title_height">54dp</dimen>
+    <dimen name="dialog_title_width">600dp</dimen>
+    <dimen name="dialog_bg_frame_spaceing_lr">30dp</dimen>
+    <dimen name="movie_info_poter_width">154dp</dimen>
+    <dimen name="movie_info_poter_height">231dp</dimen>
+    
+    <dimen name="about_spaceing_bottom">35dp</dimen>
+    <dimen name="about_text_item_spacing">25dp</dimen>
+      <dimen name="media_controller_bar_height">46dp</dimen>
+      <dimen name = "mediacontroll_vol_h_w">45dp</dimen>
+      <dimen name="media_controller_height">80dp</dimen>
+      <dimen name="media_controller_tool_w">80dp</dimen>
+      <dimen name="media_controller_tool_icon_padding_l_r">6dp</dimen>
+      <dimen name="media_controller_tool_padding">20dp</dimen>
+      
+      <dimen name="file_item_icon_h_w">45dp</dimen>
+      <dimen name ="file_item_down_h">46dp</dimen>
+      <dimen name ="file_item_down_w">56dp</dimen>
+      
+      <dimen name="share_pop_width">195dp</dimen>
+      <dimen name="share_pop_height">50dp</dimen>
+     <dimen name="delete_pop_height">60dp</dimen>
+     <dimen name="share_pop_icon">45dp</dimen>
+     
+     <!-- wifi-传输  -->
+     <dimen name="wifi_icon_width">502dp</dimen>
+     <dimen name="wifi_icon_height">185dp</dimen>
+     <dimen name="wifi_transfer_paddingTop">94dp</dimen>
+     <dimen name="wifi_center_ly_paddingleft">56dp</dimen>
+     <dimen name="wifi_center_ly_paddingright">37dp</dimen>
+     
+      <dimen name="wifi_ftp_tv_marginleft">18dp</dimen>
+     <dimen name="wifi_ftp_tv_paddingleft">15dp</dimen>
+     <dimen name="wifi_ftp_tv_paddingright">15dp</dimen>
+     
+     <dimen name="wifi_ftp_tvprompt_textsize">14sp</dimen>
+     <dimen name="wifi_ftp_tvprompt_margintop">20dp</dimen>
+     
+     <dimen name="wifi_pad_height">128dp</dimen>
+     <dimen name="wifi_pad_width">165dp</dimen>
+     <dimen name="wifi_mac_height">125dp</dimen>
+     <dimen name="wifi_mac_width">227dp</dimen>
+     
+     <dimen name="wifi_botton_line_margintop">15dp</dimen>
+     <dimen name="wifi_botton_transmitted_margintop">20dp</dimen>
+     <dimen name="wifi_cancel_transfer_marginleft">28dp</dimen>
+     <dimen name="wifi_cancel_transfer_marginright">28dp</dimen>
+     <dimen name="wifi_cancel_transfer_margintop">20dp</dimen>
+     <dimen name="wifi_cancel_transfer_marginbotton">20dp</dimen>
+      <dimen name="wifi_addview_margintop">10dp</dimen>
+     <dimen name="about_log_marginTop">55dp</dimen>
+     <!-- add by yanbo -->
+     <dimen name="video_item_close_w">32dp</dimen>
+     <dimen name="video_item_close_h">32dp</dimen>
+     
+     <!-- vidon.me tvshow seasion dialog -->
+     <dimen name="vidon_me_tvshow_season_spicing">10dp</dimen>
+     <dimen name="vidon_me_tvshow_episode_btn_w">46dp</dimen>
+     <dimen name="vidon_me_tvshow_episode_btn_h">40dp</dimen>
+     <dimen name="vidon_me_tvshow_season_bg_spicing">5dp</dimen>
+     <dimen name="vidon_me_tvshow_season_btn_h">46dp</dimen>
+     <dimen name="vidon_me_tvshow_season_btn_w">87dp</dimen>
+     <dimen name="vidon_me_tvshow_season_btn_spicing">4dp</dimen>
+     <dimen name="vidon_me_tvshow_season_dialog_width">558dp</dimen>
+     <dimen name="vidon_me_tvshow_season_dialog_Height">210dp</dimen>        
+     <dimen name="vidon_me_tvshow_episode_h_sciping">23dp</dimen>
+     <dimen name="vidon_me_tvshow_episode_v_sciping">10dp</dimen>
+     <dimen name="vidon_me_tvshow_episode_padding_lr">30dp</dimen>
+     <dimen name="vidon_me_tvshow_episode_padding_tb">10dp</dimen>
+     <dimen name="vidon_me_tvshow_episode_width">66dp</dimen>
+     <dimen name="vidon_me_tvshow_episode_height">46dp</dimen>
+      <dimen name="vidon_me_tvshow_seasontitle_padding">4dp</dimen>
+      <dimen name="vidon_me_tvshow_seasontitle_offset">25dp</dimen>
+      
+       <!-- vidon.me movie playlist dialog -->
+       <dimen name="vidon_me_movie_playlist_image_width">250dp</dimen>
+       <dimen name="vidon_me_movie_playlist_image_height">140dp</dimen>
+        <dimen name="vidon_me_movie_playlist_width">288dp</dimen>
+     <!-- screen dialog -->
+     <dimen name="vidon_me_screen_search_edit_h">51dp</dimen>
+     <dimen name="vidon_me_screen_sort_title_h">50dp</dimen>
+      <dimen name="vidon_me_screen_item_spicing">12dp</dimen>
+      <dimen name="vidon_me_screen_btn_height">40dp</dimen>
+      <dimen name="vidon_men_screen_sort_title_spicing">20dp</dimen>
+      <dimen name="vidon_me_screen_item_pading">14dp</dimen>
+      <dimen name="vidon_me_screen_item_pading_left">24dp</dimen>
+     
+               <!-- actionBar tab -->
+     <dimen name="vidon_me_actionbar_tab">30dp</dimen>
+     
+          <!-- vidon me photo grideview width -->
+     <dimen name="vidon_me_file_album_grideview_width">238dp</dimen>
+          <dimen name="vidon_me_file_album_photo_height">146dp</dimen>
+     <dimen name="vidon_me_file_album_photo_width">189dp</dimen>
+     <dimen name="vidon_me_file_album_padding_top">23dp</dimen>
+     <dimen name="vidon_me_file_album_padding_L_r">13.5dp</dimen>
+      
+     <dimen name="vidon_me_share_popupwindow_spacing">5dp</dimen>
+     <dimen name="vidon_me_gallery_item_h">44dp</dimen>
+     <dimen name="vidon_me_gallery_item_w">62dp</dimen>
+     
+      <!-- prompt -->
+     <dimen name="prompt_image_width">524dp</dimen>
+     <dimen name="prompt_image_height">293dp</dimen>
+     <dimen name="prompt_wifi_btn_width">160dp</dimen> 
+     <dimen name="prompt_wifi_btn_height">50dp</dimen> 
+     
+     
+    <dimen name="device_prompt_im_w">345dp</dimen>
+    <dimen name="device_prompt_im_h">181dp</dimen> 
+    <dimen name="device_space_im">60dp</dimen>
+    <dimen name="device_space_tx">40dp</dimen>
+    <!-- vidonme file list -->
+     <dimen name="vdin_file_height">65dp</dimen>
+     <dimen name="vdin_file_icon_width_height">70dp</dimen>
+     <dimen name="vdin_file_icon_width_weight">80dp</dimen>
+     <dimen name="tvshow_playlist_verticalSpacing">20dp</dimen>
+     <dimen name="about_logo_height">180dp</dimen>
+       
+     <dimen name="file_sort_width">64dp</dimen>
+       
+     <dimen name="splash_top">150dp</dimen>
+     <dimen name="splash_img_height">498dp</dimen>
+     <dimen name="splash_img_width">450dp</dimen>
+     <dimen name="splash_qihu_height">44dp</dimen>
+     <dimen name="splash_qihu_width">248dp</dimen>
+     
+     <dimen name="netmedia_poster_w">70dp</dimen>
+     <dimen name="netmedia_poster_h">60dp</dimen>
+</resources>

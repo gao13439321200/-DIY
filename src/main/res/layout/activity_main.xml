@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/main_rl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/main_rgBottom"/>
+
+    <RadioGroup
+        android:id="@id/main_rgBottom"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/DarkGray"
+        android:orientation="horizontal">
+        <RadioButton
+            android:id="@+id/main_rbTest"
+            style="@style/mainBottomBtn"
+            android:text="练习"
+            android:tag="练习"/>
+
+        <RadioButton
+            style="@style/mainBottomBtn"
+            android:text="视频"
+            android:tag="视频"/>
+
+        <RadioButton
+            style="@style/mainBottomBtn"
+            android:text="任务"
+            android:tag="任务"/>
+
+        <RadioButton
+            style="@style/mainBottomBtn"
+            android:text="真题"
+            android:tag="真题"/>
+
+        <RadioButton
+            style="@style/mainBottomBtn"
+            android:text="我的"
+            android:tag="我的"/>
+    </RadioGroup>
+</RelativeLayout>

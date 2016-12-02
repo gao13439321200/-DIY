@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <LinearLayout
+        style="@style/otherStudentInfoLinear">
+
+        <TextView
+            style="@style/otherStudentInfoLeft"
+            android:text="昵称:"/>
+
+        <EditText
+            android:id="@+id/other_studentinfo_nick"
+            style="@style/otherStudentInfoRight"
+            android:text=""/>
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/otherStudentInfoLinear">
+
+        <TextView
+            style="@style/otherStudentInfoLeft"
+            android:text="真实姓名:"/>
+
+        <TextView
+            android:id="@+id/other_studentinfo_name"
+            style="@style/otherStudentInfoRight"
+            android:paddingLeft="5dp"
+            android:text=""/>
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/otherStudentInfoLinear">
+
+        <TextView
+            style="@style/otherStudentInfoLeft"
+            android:text="生日:"/>
+
+        <EditText
+            android:id="@+id/other_studentinfo_birth"
+            style="@style/otherStudentInfoRight"
+            android:text=""/>
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/otherStudentInfoLinear">
+
+        <TextView
+            style="@style/otherStudentInfoLeft"
+            android:text="性别:"/>
+
+        <EditText
+            android:id="@+id/other_studentinfo_sex"
+            style="@style/otherStudentInfoRight"
+            android:text=""/>
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/otherStudentInfoLinear">
+
+        <TextView
+            style="@style/otherStudentInfoLeft"
+            android:text="城市:"/>
+
+        <EditText
+            android:id="@+id/other_studentinfo_city"
+            style="@style/otherStudentInfoRight"
+            android:text=""/>
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/otherStudentInfoLinear">
+
+        <TextView
+            style="@style/otherStudentInfoLeft"
+            android:text="学校:"/>
+
+        <EditText
+            android:id="@+id/other_studentinfo_school"
+            style="@style/otherStudentInfoRight"
+            android:text=""/>
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/otherStudentInfoLinear">
+
+        <TextView
+            style="@style/otherStudentInfoLeft"
+            android:text="年级:"/>
+
+        <TextView
+            android:id="@+id/other_studentinfo_grade"
+            style="@style/otherStudentInfoRight"
+            android:paddingLeft="5dp"
+            android:text=""/>
+    </LinearLayout>
+</LinearLayout>

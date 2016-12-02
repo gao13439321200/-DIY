@@ -1,0 +1,98 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    <!--首页下边导航栏按钮-->
+    <style name="mainBottomBtn">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@drawable/main_bottom_btn</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:button">@null</item>
+        <item name="android:gravity">center</item>
+        <item name="android:onClick">onMainClick</item>
+    </style>
+    <!--“其他”模块的按钮-->
+    <style name="otherButtonStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">start|center_vertical</item>
+        <item name="android:paddingStart">10dp</item>
+        <item name="android:background">@null</item>
+    </style>
+    <!--个人信息左侧文字-->
+    <style name="otherStudentInfoLeft">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">right</item>
+        <item name="android:paddingRight">5dp</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+    <!--个人信息右侧文字-->
+    <style name="otherStudentInfoRight">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">3</item>
+        <item name="android:enabled">false</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+    <!--个人信息每行的布局-->
+    <style name="otherStudentInfoLinear">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_margin">5dp</item>
+    </style>
+    <!--左侧侧滑菜单radioButton属性-->
+    <style name="subjectRadioButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/x50</item>
+        <item name="android:button">@null</item>
+        <item name="android:gravity">center</item>
+        <item name="android:onClick">onSubjectClick</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:layout_marginBottom">@dimen/x5</item>
+        <item name="android:background">@drawable/base_subjectrb</item>
+    </style>
+    <!--左侧侧滑菜单RadioGroup属性-->
+    <style name="subjectRadioGroup">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:divider">@color/black</item>
+        <item name="android:layout_marginLeft">2dp</item>
+    </style>
+    <!--左侧侧滑菜单ScrollView属性-->
+    <style name="subjectScrollView">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:scrollbars">none</item>
+        <item name="android:visibility">gone</item>
+    </style>
+    <!--视频列表子菜单文字-->
+    <style name="videoChildTv">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:padding">10dp</item>
+    </style>
+    <!--视频播放进度条-->
+    <style name="Widget.SeekBar.Normal" parent="@android:style/Widget.SeekBar">
+        <item name="android:maxHeight">5dp</item>
+        <item name="android:indeterminateOnly">false</item>
+        <item name="android:indeterminateDrawable">@android:drawable/progress_indeterminate_horizontal</item>
+        <item name="android:progressDrawable">@layout/video_seek</item>
+        <item name="android:minHeight">5dp</item>
+        <item name="android:thumb">@mipmap/seek_thumb</item>
+        <item name="android:thumbOffset">10dp</item>
+    </style>
+</resources>
