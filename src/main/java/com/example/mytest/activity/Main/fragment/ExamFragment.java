@@ -29,7 +29,6 @@ public class ExamFragment extends BaseFragment implements Observer {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         ButterKnife.bind(this, mView);
-
         return mView;
     }
 
