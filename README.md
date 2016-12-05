@@ -1,5 +1,9 @@
-这是一个自定义的手机项目
-能够让广大的中小学生的学习成绩做出非常大提升
+MVP
+Dagger2
+Retrofit2
+ButterKnife
+SwipeMenuRecyclerView
+
 
 在工程中的gradle中配置
 buildscript {
@@ -15,5 +19,3 @@ buildscript {
     }
 }
 
-这是一个自定义的手机项目
-能够让广大的中小学生的学习成绩做出非常大提升
