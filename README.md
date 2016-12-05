@@ -4,7 +4,7 @@ Dagger2
 Retrofit2
 ButterKnife
 SwipeMenuRecyclerView
-
+//todo rxjava 
 在工程中的gradle中配置
 buildscript {
     repositories {
