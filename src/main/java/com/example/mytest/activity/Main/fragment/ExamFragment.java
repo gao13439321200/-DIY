@@ -40,7 +40,7 @@ public class ExamFragment extends BaseFragment implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-
+        String a = "1";
     }
 
 }
