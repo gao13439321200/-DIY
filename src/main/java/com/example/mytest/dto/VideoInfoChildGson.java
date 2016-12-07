@@ -9,6 +9,12 @@ public class VideoInfoChildGson {
     private String ccid;
     private String name;
 
+    public VideoInfoChildGson(String ccid, String name) {
+        this.ccid = ccid;
+        this.name = name;
+    }
+    public VideoInfoChildGson() {
+    }
     public String getTeacher() {
         return teacher;
     }
