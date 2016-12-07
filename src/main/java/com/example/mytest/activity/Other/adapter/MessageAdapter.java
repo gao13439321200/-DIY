@@ -18,8 +18,8 @@ import java.util.List;
  * 消息adapter
  */
 public class MessageAdapter extends SwipeMenuAdapter {
-    public List<MessageGson> mArrayList = null;
-    public OnItemClick mOnItemClick;
+    private List<MessageGson> mArrayList = null;
+    private OnItemClick mOnItemClick;
 
     public MessageAdapter(List<MessageGson> list) {
         this.mArrayList = list;
@@ -61,13 +61,13 @@ public class MessageAdapter extends SwipeMenuAdapter {
         return mArrayList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    private class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView textMsg, textTime;
         OnItemClick mOnItemClick;
         ImageView mImageView;
 
-        public ViewHolder(View itemView) {
+        ViewHolder(View itemView) {
             super(itemView);
             textMsg = (TextView) itemView.findViewById(R.id.item_other_message_msg);
             textTime = (TextView) itemView.findViewById(R.id.item_other_message_time);
@@ -75,7 +75,7 @@ public class MessageAdapter extends SwipeMenuAdapter {
             itemView.setOnClickListener(this);//绑定回调函数
         }
 
-        public void setOnItemClick(OnItemClick onItemClick) {
+        void setOnItemClick(OnItemClick onItemClick) {
             this.mOnItemClick = onItemClick;
         }
 
