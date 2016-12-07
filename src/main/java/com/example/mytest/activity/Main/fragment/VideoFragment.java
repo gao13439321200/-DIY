@@ -1,28 +1,22 @@
 package com.example.mytest.activity.Main.fragment;
 
-import android.content.res.AssetFileDescriptor;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
+import android.widget.ExpandableListView;
 
 import com.example.mytest.R;
 import com.example.mytest.activity.BaseFragment;
 import com.example.mytest.activity.Video.MyVideoFragment;
 import com.example.mytest.activity.Video.presenter.VideoPresenter;
 import com.example.mytest.activity.Video.view.VideoView;
+import com.example.mytest.adapter.VideoExpanableAdapter;
 import com.example.mytest.dto.ApiResponse;
-import com.example.mytest.dto.VideoInfoChildGson;
 import com.example.mytest.dto.VideoInfoParent;
 import com.example.mytest.util.Const;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
@@ -40,14 +34,11 @@ public class VideoFragment extends BaseFragment implements VideoView, Observer {
 
     @Inject
     VideoPresenter mVideoPresenter;
-    @BindView(R.id.video_rg_parent)
-    RadioGroup mVideoRgParent;
-    @BindView(R.id.video_rg_child)
-    RadioGroup mVideoRgChild;
-    //    @BindView(R.id.video_player)
-//    android.widget.VideoView mVideoPlayer;
+    @BindView(R.id.expandable_Listview)
+    ExpandableListView mExpandableListView; //可展开得listview
     private List<VideoInfoParent> mInfoParents;
-    private List<VideoInfoChildGson> mInfoChildGsons;
+    private VideoExpanableAdapter videoExpanableAdapter;//
+
 
     @Nullable
     @Override
@@ -56,40 +47,59 @@ public class VideoFragment extends BaseFragment implements VideoView, Observer {
         mBaseComponent.inject(this);
         mVideoPresenter.getVideoList(subjectID);
         ButterKnife.bind(this, mView);
-        initData();
         return mView;
     }
 
     private void initData() {
-        mInfoParents = new ArrayList<>();
-        mInfoChildGsons = new ArrayList<>();
-        mVideoRgParent.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        //初始化
+        videoExpanableAdapter = new VideoExpanableAdapter(mInfoParents,getActivity().getApplicationContext());
+        mExpandableListView.setAdapter(videoExpanableAdapter);
+        mExpandableListView.expandGroup(0);
+        mExpandableListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
             @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                RadioButton button = (RadioButton) getActivity().findViewById(i);
-                mInfoChildGsons.clear();
-                mInfoChildGsons.addAll(mInfoParents.get(Integer.parseInt(button.getTag().toString())).getList());
-                setChildGroup();
+            public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
+                showToast( "ExpandableListView GroupClickListener groupPosition=" + groupPosition);
+//                for (int i = 0, count = videoExpanableAdapter.getGroupCount(); i < count; i++) {
+//                    if (groupPosition != i) {//todo 关闭其他分组 存在bug
+//                        mExpandableListView.collapseGroup(i);
+//                    }
+//                }
+//                closeALl(groupPosition);
+                return false;
             }
         });
-        mVideoRgChild.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        mExpandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                RadioButton button = (RadioButton) getActivity().findViewById(i);
-                VideoInfoChildGson video = mInfoChildGsons.get(Integer.parseInt(button.getTag().toString()));
-                getActivity().setTitle(video.getName());
-                try {
-                    AssetFileDescriptor fileDescriptor = getActivity().getAssets().openFd("start.mp4");
-                    fragment.changeVideo(fileDescriptor);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+                showToast( "ExpandableListView ChildClickListener groupPosition=" + groupPosition+ "||childPosition=" + childPosition);
+//                getActivity().setTitle(video.getName());
+//                try {
+//                    AssetFileDescriptor fileDescriptor = getActivity().getAssets().openFd("start.mp4");
+//                    fragment.changeVideo(fileDescriptor);
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+                return false;
             }
         });
+
+
         playVideo("http://192.168.20.66:82/data/userdata/vod/resource/2.mp4");
 
     }
 
+    /**
+     * 关闭展开得group
+     * @param currentPosition
+     */
+    private void closeALl(int currentPosition) {
+        int groupCount = mInfoParents.size();
+        for (int i = 0; i < groupCount; i++) {
+            if(i!=currentPosition){
+                mExpandableListView.collapseGroup(i);
+            }
+        }
+    }
 
     @Override
     public int getLayoutID() {
@@ -97,6 +107,7 @@ public class VideoFragment extends BaseFragment implements VideoView, Observer {
     }
 
     MyVideoFragment fragment;
+
     /**
      * 加载视频
      *
@@ -120,49 +131,13 @@ public class VideoFragment extends BaseFragment implements VideoView, Observer {
         switch (apiResponse.getEvent()) {
             case Const.SUCCESS:
                 mInfoParents = apiResponse.getObjList();
-                setParentGroup();
-                mInfoChildGsons.clear();
-                mInfoChildGsons.addAll(mInfoParents.get(0).getList());
-                setChildGroup();
+                initData();
                 break;
             case Const.FAILED:
                 showToast("列表获取失败");
                 break;
         }
     }
-
-    /**
-     * 设置父菜单
-     */
-    private void setParentGroup() {
-        mVideoRgParent.removeAllViews();
-        for (int i = 0; i < mInfoParents.size(); i++) {
-            RadioButton radioButton = new RadioButton(getActivity());
-            radioButton.setText(mInfoParents.get(i).getName());
-            radioButton.setButtonDrawable(getResources().getDrawable(android.R.color.transparent));
-            radioButton.setGravity(Gravity.CENTER);
-            radioButton.setTag(i);
-            radioButton.setBackgroundResource(R.drawable.base_subjectrb);
-            mVideoRgParent.addView(radioButton, LinearLayout.LayoutParams.MATCH_PARENT, 150);
-        }
-    }
-
-    /**
-     * 设置子菜单
-     */
-    private void setChildGroup() {
-        mVideoRgChild.removeAllViews();
-        for (int i = 0; i < mInfoChildGsons.size(); i++) {
-            RadioButton radioButton = new RadioButton(getActivity());
-            radioButton.setText(mInfoChildGsons.get(i).getTeacher() + " " + mInfoChildGsons.get(i).getName());
-            radioButton.setBackgroundResource(R.drawable.base_subjectrb);
-            radioButton.setButtonDrawable(getResources().getDrawable(android.R.color.transparent));
-            radioButton.setGravity(Gravity.CENTER);
-            radioButton.setTag(i);
-            mVideoRgChild.addView(radioButton, LinearLayout.LayoutParams.MATCH_PARENT, 150);
-        }
-    }
-
 
     //观察者模式回调方法，用于更新用户选择的科目
     @Override

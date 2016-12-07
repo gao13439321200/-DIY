@@ -19,31 +19,46 @@
         android:baselineAligned="false"
         android:layout_weight="1">
 
-        <ScrollView
-            android:layout_width="0dp"
+        <!--<ScrollView-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:background="@color/grgray"-->
+            <!--&gt;-->
+
+            <!--<RadioGroup-->
+                <!--android:id="@+id/video_rg_parent"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--/>-->
+        <!--</ScrollView>-->
+
+        <!--<ScrollView-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--&gt;-->
+
+            <!--<RadioGroup-->
+                <!--android:id="@+id/video_rg_child"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--/>-->
+        <!--</ScrollView>-->
+        <ExpandableListView
+            android:id="@+id/expandable_Listview"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@color/grgray"
-            >
+            android:background="@drawable/channel_expandablelistview_bg"
+            android:cacheColorHint="#00000000"
+            android:divider="#ebebeb"
+            android:dividerHeight="1dp"
+            android:footerDividersEnabled="false"
+            android:groupIndicator="@null"
+        >
 
-            <RadioGroup
-                android:id="@+id/video_rg_parent"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                />
-        </ScrollView>
+        </ExpandableListView>
 
-        <ScrollView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            >
 
-            <RadioGroup
-                android:id="@+id/video_rg_child"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                />
-        </ScrollView>
     </LinearLayout>
 </LinearLayout>
