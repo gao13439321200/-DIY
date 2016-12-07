@@ -18,7 +18,6 @@ import javax.inject.Inject;
  */
 public class VideoPresenter extends BasePresenter {
     private VideoView mVideoView;
-    private String subjectID;
 
     @Inject
     public VideoPresenter(BaseView view, Context context) {

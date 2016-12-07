@@ -22,6 +22,7 @@ import com.example.mytest.dto.JiaoCai;
 import com.example.mytest.dto.School;
 import com.example.mytest.dto.UserInfoGson;
 import com.example.mytest.util.Const;
+import com.example.mytest.util.SchoolUtil;
 import com.example.mytest.util.SubjectUtil;
 
 import java.util.ArrayList;
@@ -45,10 +46,12 @@ public class MainActivity extends BaseActivity implements MainView {
     @Inject
     MainPresenter mMainPresenter;
     private SubjectUtil mSubjectUtil;
+    private SchoolUtil mSchoolUtil;
     private Map<String, List<BookGson>> mBookList = new HashMap<>();
     private Map<String, JiaoCai> mJiaocaiList = new HashMap<>();
     private List<School> mSchoolList = new ArrayList<>();
     private RadioGroup.LayoutParams mLayoutParams;
+    private String schoolID = "0";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -60,9 +63,10 @@ public class MainActivity extends BaseActivity implements MainView {
     }
 
     private void initData() {
-        mLayoutParams = new RadioGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,150);
+        mLayoutParams = new RadioGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 150);
         mLayoutParams.setMargins(0, 10, 0, 10);//设置边距
         mSubjectUtil = new SubjectUtil();
+        mSchoolUtil = new SchoolUtil();
         mMainRbTest.setChecked(true);//设置默认选中
         mSubjectMath.setChecked(true);//设置默认选中
         mMainPresenter.getJiaoCai();//获取教材信息
@@ -94,6 +98,10 @@ public class MainActivity extends BaseActivity implements MainView {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 RadioButton button = (RadioButton) findViewById(checkedId);
+                if (!button.getTag().equals(schoolID)) {
+                    schoolID = (String) button.getTag();
+                    mSchoolUtil.sendMessage(schoolID);//学校的点击事件发送消息
+                }
             }
         });
     }
@@ -108,11 +116,13 @@ public class MainActivity extends BaseActivity implements MainView {
      * 科目点击事件
      */
     public void onSubjectClick(View view) {
-        subjectID = (String) view.getTag();
-        // TODO: 2016/11/18 高鹏 使用观察者模式在视频页判断subjectID是否改变了
-        mSubjectUtil.sendMsg(subjectID);
-        if ("全部保存".equals(mSubjectTvBook.getText().toString().trim())) {
-            setBookRadioButton();
+        if (!view.getTag().equals(subjectID)) {
+            subjectID = (String) view.getTag();
+            // TODO: 2016/11/18 高鹏 使用观察者模式在视频页判断subjectID是否改变了
+            mSubjectUtil.sendMsg(subjectID);
+            if ("全部保存".equals(mSubjectTvBook.getText().toString().trim())) {
+                setBookRadioButton();
+            }
         }
     }
 
@@ -201,7 +211,7 @@ public class MainActivity extends BaseActivity implements MainView {
             rb.setBackgroundResource(R.drawable.base_subjectrb);
             rb.setGravity(Gravity.CENTER);
             mSchoolListRg.addView(rb, mLayoutParams);
-            if (school.getName().equals("全部"))
+            if (school.getId().equals(schoolID))
                 rb.setChecked(true);
         }
     }
@@ -241,6 +251,9 @@ public class MainActivity extends BaseActivity implements MainView {
         String tag = view.getTag().toString();
         hideRight();
         mSubjectUtil.deleteObservers();
+        mSchoolUtil.deleteObservers();
+        Bundle bundle = new Bundle();
+        bundle.putString("subjectID", subjectID);
         switch (tag) {
             case "练习":
                 break;
@@ -254,7 +267,9 @@ public class MainActivity extends BaseActivity implements MainView {
             case "真题":
                 setRightBtn("学校");
                 ExamFragment examFragment = new ExamFragment();
+                examFragment.setArguments(bundle);
                 mSubjectUtil.addObserver(examFragment);
+                mSchoolUtil.addObserver(examFragment);
                 changeFragment(R.id.main_rl, examFragment);
                 break;
             case "我的":
