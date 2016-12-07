@@ -119,6 +119,9 @@ public class JsonUtil {
             case MyUrl.GETSCHOOLLIST://获取学校列表
                 obj = dataService.getSchoolList(result);
                 break;
+            case MyUrl.GETEXAMLIST://获取试卷
+                obj = dataService.getShiJuanList(result);
+                break;
         }
         return obj;
     }

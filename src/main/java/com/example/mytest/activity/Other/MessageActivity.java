@@ -83,14 +83,9 @@ public class MessageActivity extends BaseActivity implements MessageView {
      * 菜单创建器。在Item要创建菜单的时候调用。
      */
     private SwipeMenuCreator mSwipeMenuCreator = new SwipeMenuCreator() {
-        /**
-         * @param swipeLeftMenu
-         * @param swipeRightMenu
-         * @param viewType
-         */
         @Override
         public void onCreateMenu(SwipeMenu swipeLeftMenu, SwipeMenu swipeRightMenu, int viewType) {
-            int width = getResources().getDimensionPixelSize(R.dimen.dp_100);
+            int width = getResources().getDimensionPixelSize(R.dimen.dp_60);
             // MATCH_PARENT 自适应高度，保持和内容一样高；也可以指定菜单具体高度，也可以用WRAP_CONTENT。
             int height = ViewGroup.LayoutParams.MATCH_PARENT;
             //添加右侧菜单
@@ -152,7 +147,7 @@ public class MessageActivity extends BaseActivity implements MessageView {
     /**
      * 条目点击事件
      */
-    public MessageAdapter.OnItemClick onItemClick = new MessageAdapter.OnItemClick() {
+    private MessageAdapter.OnItemClick onItemClick = new MessageAdapter.OnItemClick() {
         @Override
         public void onItemClick(int positon) {
             Intent intent = new Intent(MessageActivity.this, MessageInfoActivity.class);

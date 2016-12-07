@@ -2,6 +2,7 @@ package com.example.mytest.data.dagger;
 
 import com.example.mytest.activity.Login.LoginActivity;
 import com.example.mytest.activity.Main.MainActivity;
+import com.example.mytest.activity.Main.fragment.ExamFragment;
 import com.example.mytest.activity.Main.fragment.VideoFragment;
 import com.example.mytest.activity.Other.ActivateActivity;
 import com.example.mytest.activity.Other.MessageActivity;
@@ -41,5 +42,7 @@ public interface BaseComponent {
     void inject(MainActivity mainActivity);
 
     void inject(VideoFragment videoFragment);
+
+    void inject(ExamFragment examFragment);
 
 }

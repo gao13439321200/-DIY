@@ -8,6 +8,7 @@ import com.example.mytest.dto.CeGson;
 import com.example.mytest.dto.JiaoCai;
 import com.example.mytest.dto.MessageGson;
 import com.example.mytest.dto.School;
+import com.example.mytest.dto.ShiJuanGson;
 import com.example.mytest.dto.UpdateInfoGson;
 import com.example.mytest.dto.LoginInfoGson;
 import com.example.mytest.dto.UserInfoGson;
@@ -283,7 +284,7 @@ public class DataService {
             try {
                 JSONObject object = new JSONObject(info);
                 Iterator iterator = object.keys();
-                while (iterator.hasNext()){
+                while (iterator.hasNext()) {
                     School school = new School();
                     String id = iterator.next().toString();
                     school.setId(id);
@@ -292,6 +293,32 @@ public class DataService {
                 }
                 apiResponse.setEvent(Const.SUCCESS);
                 apiResponse.setObjList(listSchool);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        return apiResponse;
+    }
+
+    //获取试卷
+    public ApiResponse<List<ShiJuanGson>> getShiJuanList(String info) {
+        ApiResponse<List<ShiJuanGson>> apiResponse = new ApiResponse<>(Const.FAILED, "");
+        List<ShiJuanGson> list = new ArrayList<>();
+        if (info != null) {
+            try {
+                JSONObject object = new JSONObject(info);
+                JSONArray array = object.getJSONArray("list");
+                for (int i = 0; i < array.length(); i++) {
+                    JSONObject item = (JSONObject) array.opt(i);
+                    ShiJuanGson shiJuanGson = new ShiJuanGson();
+                    shiJuanGson.setName(item.has("name") ? item.getString("name") : "");//名字
+                    shiJuanGson.setExam_pdf_src(item.has("exam_pdf_src") ? item.getString("exam_pdf_src") : "");//试卷地址
+                    shiJuanGson.setAnswer_pdf_src(item.has("answer_pdf_src") ? item.getString("answer_pdf_src") : "");//答案地址
+                    shiJuanGson.setAllNum(object.has("pagecount") ? object.getString("pagecount") : "0");//总页数
+                    list.add(shiJuanGson);
+                }
+                apiResponse.setEvent(Const.SUCCESS);
+                apiResponse.setObjList(list);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
