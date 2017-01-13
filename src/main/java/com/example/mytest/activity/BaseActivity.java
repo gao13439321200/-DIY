@@ -28,7 +28,7 @@ import butterknife.OnClick;
 
 /**
  * Created by gaopeng on 2016/11/4.
- * 基础Acitivty
+ * 基础Acitivty//test
  */
 public abstract class BaseActivity extends Activity implements BaseView {
     @BindView(R.id.base_back)//返回
