@@ -1,19 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:background="#ffffff"
-    android:orientation="horizontal"
-    android:padding="10dip" >
-
-    <View
-        android:id="@+id/channel_line"
-        android:layout_width="3dp"
-        android:layout_height="15dp"
-        android:layout_marginLeft="5dp"
-        android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true"
-        android:background="#79BEF7" />
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="#ffffff"
+                android:orientation="horizontal"
+                android:padding="10dip"
+                android:layout_margin="2dp"
+>
 
     <TextView
         android:id="@+id/tv_special_videoName"
@@ -22,7 +15,6 @@
         android:layout_centerVertical="true"
         android:layout_gravity="center"
         android:layout_marginLeft="5dp"
-        android:layout_toRightOf="@id/channel_line"
         android:text="专题五：数列"
         android:textColor="#8e8e8e"
         android:textSize="18sp" />
