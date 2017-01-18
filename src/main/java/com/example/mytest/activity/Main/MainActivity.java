@@ -45,6 +45,8 @@ public class MainActivity extends BaseActivity implements MainView {
     RadioButton mMainRbTest;
     @Inject
     MainPresenter mMainPresenter;
+    @BindView(R.id.main_rgBottom)
+    RadioGroup mMainRgBottom;
     private SubjectUtil mSubjectUtil;
     private SchoolUtil mSchoolUtil;
     private Map<String, List<BookGson>> mBookList = new HashMap<>();
@@ -354,5 +356,9 @@ public class MainActivity extends BaseActivity implements MainView {
                 Log.d(TAG, "获取学校列表失败");
                 break;
         }
+    }
+
+    public void hideBottom(){
+        mMainRgBottom.setVisibility(View.GONE);
     }
 }

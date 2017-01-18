@@ -4,14 +4,14 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
-    <LinearLayout
-        android:id="@+id/video_main"
+    <RelativeLayout
+        android:id="@+id/video_Screen"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/grgray"
         android:orientation="horizontal"
         android:layout_weight="2">
-    </LinearLayout>
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -34,4 +34,15 @@
 
 
     </LinearLayout>
+
+    <!--全屏播放视频容器-->
+    <FrameLayout
+        android:id="@+id/video_fullScreen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        >
+
+    </FrameLayout>
+
 </LinearLayout>

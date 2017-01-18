@@ -17,10 +17,18 @@ public class MyUrl {
     /**
      * 本地测试环境
      */
-    public static final String HTML = "http://192.168.12.227/ifdood_dev01/v2";//测试接口
-    public static final String HTML_SEND_ANWSER = "http://192.168.12.227/ifdood_dev01";
-    public static final String HTML_PACKAGE_DETAIL="http://192.168.12.176/jiaoxue/package/ppp_package_detail/";//课程包测试环境
-    public static String HTML_ZNJF = "http://192.168.12.176/api/diag";//智能教辅测试环境
+//    public static final String HTML = "http://192.168.12.227/ifdood_dev01/v2";//测试接口
+//    public static final String HTML_SEND_ANWSER = "http://192.168.12.227/ifdood_dev01";
+//    public static final String HTML_PACKAGE_DETAIL="http://192.168.12.176/jiaoxue/package/ppp_package_detail/";//课程包测试环境
+//    public static String HTML_ZNJF = "http://192.168.12.176/api/diag";//智能教辅测试环境
+
+    /**
+     * mp4测试环境
+     */
+    public static final String HTML = "http://192.168.20.104/ifdood_dev01/v2";//测试接口
+    public static final String HTML_SEND_ANWSER = "http://192.168.20.104/ifdood_dev01";
+    public static final String HTML_PACKAGE_DETAIL="http://192.168.20.104/jiaoxue/package/ppp_package_detail/";//课程包测试环境
+    public static String HTML_ZNJF = "http://192.168.20.104/api/diag";//智能教辅测试环境
 
     //登录
     public static final String LOGIN = "xitong/userLogin_app.php";

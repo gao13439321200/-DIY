@@ -116,7 +116,7 @@ public abstract class BaseActivity extends Activity implements BaseView {
     /**
      * 隐藏标题栏
      */
-    protected void hideTitle() {
+    public void hideTitle() {
         mBaseRlTitle.setVisibility(View.GONE);
     }
     /**

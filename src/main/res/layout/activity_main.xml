@@ -3,14 +3,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-    <RelativeLayout
-        android:id="@+id/main_rl"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/main_rgBottom"/>
-
     <RadioGroup
-        android:id="@id/main_rgBottom"
+        android:id="@+id/main_rgBottom"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
@@ -42,4 +36,10 @@
             android:text="我的"
             android:tag="我的"/>
     </RadioGroup>
+
+    <RelativeLayout
+        android:id="@+id/main_rl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/main_rgBottom"/>
 </RelativeLayout>

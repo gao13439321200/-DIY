@@ -16,6 +16,7 @@ import com.example.mytest.dto.VideoInfoChildGson;
 import com.example.mytest.dto.VideoInfoParent;
 import com.example.mytest.util.Const;
 import com.google.gson.Gson;
+import com.orhanobut.logger.Logger;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -251,6 +252,7 @@ public class DataService {
     public ApiResponse<List<VideoInfoParent>> getVideoList(String info) {
         ApiResponse<List<VideoInfoParent>> apiResponse = new ApiResponse<>(Const.FAILED, "");
         List<VideoInfoParent> listParent = new ArrayList<>();
+        Logger.json(info);
         if (info != null && !"".equals(info)) {
             try {
                 JSONObject jsonObject = new JSONObject(info);

@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.mytest.R;
+import com.example.mytest.activity.Video.VideoBaseFragment;
 import com.example.mytest.data.BaseView;
 import com.example.mytest.data.dagger.BaseComponent;
 import com.example.mytest.data.dagger.BaseModul;
@@ -60,4 +62,24 @@ public abstract class BaseFragment extends Fragment implements BaseView {
         fragmentTransaction.commit();
     }
 
+    /**
+     * 加载视频的fragment
+     *
+     * @param path            视频的mp4地址
+     * @param isAllScreen     是否全屏
+     * @param currentPosition 播放的位置
+     */
+    public VideoBaseFragment setVideoFragment(String path, boolean isAllScreen, int currentPosition) {
+        VideoBaseFragment videoFragment = new VideoBaseFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("url", path);
+        bundle.putBoolean("isAllScreen", isAllScreen);
+        bundle.putInt("currentPosition", currentPosition);
+        videoFragment.setArguments(bundle);
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.video_Screen, videoFragment);// 2017/1/9 高鹏 所有加载视频的父布局的id统一用video_Screen
+        fragmentTransaction.commit();
+        return videoFragment;
+    }
 }

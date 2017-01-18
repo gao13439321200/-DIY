@@ -1,10 +1,8 @@
 package com.example.mytest.adapter;
 
 import android.content.Context;
-import android.content.res.AssetFileDescriptor;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,13 +12,9 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.mytest.R;
-import com.example.mytest.activity.Video.SetSystem;
-import com.example.mytest.dto.VideoInfoChildGson;
 import com.example.mytest.dto.VideoInfoParent;
-import com.example.mytest.util.SubjectUtil;
 import com.example.mytest.util.VideoChangeObervable;
 
 import java.util.ArrayList;
@@ -34,28 +28,15 @@ import java.util.List;
 
 public class VideoExpanableAdapter extends BaseExpandableListAdapter{
     private List<VideoInfoParent> mInfoParents;
-    private List<String> list;
-    private List<List<String>> childlist;
     private Context mContext;
     private LayoutInflater mLayoutInflater;
-    private VideoChangeObervable videoChangeObervable;
+    private VideoChangeObervable mObservable;
 
-    public VideoExpanableAdapter(List<VideoInfoParent> mInfoParents, Context context, VideoChangeObervable videoChangeObervable) {
+    public VideoExpanableAdapter(List<VideoInfoParent> mInfoParents,Context context ,VideoChangeObervable observable) {
         this.mInfoParents = mInfoParents;
         this.mContext = context;
+        this.mObservable = observable;
         mLayoutInflater = LayoutInflater.from(mContext);
-        list = new ArrayList<>();
-        childlist = new ArrayList<>();
-        this.videoChangeObervable = videoChangeObervable;
-        // 对列表展示数据进行处理
-        for (int i = 0; i <mInfoParents.size() ; i++) {
-            list.add(mInfoParents.get(i).getName());
-            List<String> mclist = new ArrayList<>();
-            for (int j = 0; j <mInfoParents.get(i).getList().size() ; j++) {
-                mclist.add(mInfoParents.get(i).getList().get(j).getTeacher()+"/"+mInfoParents.get(i).getList().get(j).getName());
-            }
-            childlist.add(mclist);
-        }
     }
 
     ViewHolderGroup viewHolderGroup;
@@ -92,18 +73,12 @@ public class VideoExpanableAdapter extends BaseExpandableListAdapter{
             viewHolderGroup.imageView.setImageResource(R.drawable.channel_expandablelistview_bottom_icon);
         }
         //专题视频名称
-        viewHolderGroup.special_videoName.setText(list.get(groupPosition));
+        viewHolderGroup.special_videoName.setText(mInfoParents.get(groupPosition).getName());
         return convertView;
     }
 
     /**
      * group 展开之后得子布局，使用GridView展示
-     * @param groupPosition
-     * @param childPosition
-     * @param isLastChild
-     * @param convertView
-     * @param parent
-     * @return
      */
     @Override
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
@@ -117,24 +92,23 @@ public class VideoExpanableAdapter extends BaseExpandableListAdapter{
         }
 
         // 使用 SimpleAdapter 来是设置GridView 数据
-        SimpleAdapter mSimpleAdapter = new SimpleAdapter(mContext, setGridViewData(childlist.get(groupPosition)), R.layout.video_child_gridview_item,
+        SimpleAdapter mSimpleAdapter = new SimpleAdapter(mContext, setGridViewData(mInfoParents.get(groupPosition)), R.layout.video_child_gridview_item,
                 new String[] { "video_gridview_item" }, new int[] { R.id.tv_gridview_video_name });
         viewHolderGroup.gridView.setAdapter(mSimpleAdapter);
-        setGridViewListener(viewHolderGroup.gridView);
+        setGridViewListener(viewHolderGroup.gridView , groupPosition);
         viewHolderGroup.gridView.setSelector(new ColorDrawable(Color.TRANSPARENT));
         return convertView;
     }
 
     /**
      * 设置GridVIew 显示数据
-     * @param list    子项 text
-     * @return
      */
-    private ArrayList<HashMap<String, Object>> setGridViewData(List<String> list) {
+    private ArrayList<HashMap<String, Object>> setGridViewData(VideoInfoParent videoInfoParent) {
         ArrayList<HashMap<String, Object>> gridItem = new ArrayList<>();
-        for (int i = 0; i < list.size(); i++) {
+        for (int i = 0; i < videoInfoParent.getList().size(); i++) {
             HashMap<String, Object> hashMap = new HashMap<>();
-            hashMap.put("video_gridview_item", list.get(i));
+            hashMap.put("video_gridview_item", videoInfoParent.getList().get(i).getTeacher()+"--"
+                    +videoInfoParent.getList().get(i).getName());
             gridItem.add(hashMap);
         }
         return gridItem;
@@ -142,22 +116,16 @@ public class VideoExpanableAdapter extends BaseExpandableListAdapter{
 
     /**
      * 设置子项视频点击事件
-     * @param gridView
      */
-    private void setGridViewListener(GridView gridView) {
+    private void setGridViewListener(GridView gridView , final int parentPosition) {
         gridView.setOnItemClickListener(new GridView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // TODO Auto-generated method stub
                 if(view instanceof TextView){
                     //如果想要获取到哪一行，则自定义gridview的adapter，item设置2个textview一个隐藏设置id，显示哪一行
-                    TextView tv = (TextView) view ;
-//                    Toast.makeText(mContext, "position=" + position+"||"+tv.getText(), Toast.LENGTH_SHORT).show();
-                    Log.e("lg", "gridView listaner position=" + position + "||text="+tv.getText());
-                    //通过观察者模式通知VideoFragment 改变视频播放状态
-                    videoChangeObervable.sendMsg(new VideoInfoChildGson(position+"",tv.getText().toString()));
+                    mObservable.sendMsg(mInfoParents.get(parentPosition).getList().get(position));
                 }
-
             }
         });
 
@@ -165,7 +133,7 @@ public class VideoExpanableAdapter extends BaseExpandableListAdapter{
 
     @Override
     public int getGroupCount() {
-        return list.size();
+        return mInfoParents.size();
     }
 
     @Override
@@ -175,12 +143,12 @@ public class VideoExpanableAdapter extends BaseExpandableListAdapter{
 
     @Override
     public Object getGroup(int groupPosition) {
-        return list.get(groupPosition);
+        return mInfoParents.get(groupPosition);
     }
 
     @Override
     public Object getChild(int groupPosition, int childPosition) {
-        return childlist.get(groupPosition).get(childPosition);
+        return mInfoParents.get(groupPosition).getList().get(childPosition);
     }
 
     @Override
@@ -195,7 +163,7 @@ public class VideoExpanableAdapter extends BaseExpandableListAdapter{
 
     @Override
     public boolean hasStableIds() {
-        return false;
+        return true;
     }
 
     /**
